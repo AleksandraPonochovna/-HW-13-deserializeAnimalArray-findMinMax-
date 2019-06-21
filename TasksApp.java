@@ -33,7 +33,7 @@ public class TasksApp<T> {
     }
 
     public static Animal[] deserializeAnimalArray(byte[] data) {
-        try (ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(data))) {
+        try (ObjectInputStream inputStream = new ObjectInputStream(new ByteArrayInputStream(data))) {
             int size = ois.readInt();
             Animal[] animals = new Animal[size];
             for (Animal animal : animals) {
