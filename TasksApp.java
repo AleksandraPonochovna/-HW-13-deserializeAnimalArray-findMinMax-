@@ -40,11 +40,11 @@ public class TasksApp {
             Stream<? extends T> stream,
             Comparator<? super T> order,
             BiConsumer<? super T, ? super T> minMaxConsumer) {
-        List<T> list = stream.sorted(order).collect(Collectors.toList());
+        List<T> list = stream.collect(Collectors.toList());
         if (list.isEmpty()) {
             minMaxConsumer.accept(null, null);
         } else {
-            minMaxConsumer.accept(list.get(0), list.get(list.size() - 1));
+            minMaxConsumer.accept(Collections.min(list, order), Collections.max(list, order));
         }
     }
 
